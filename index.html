@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Forest Bowtruckles - Quadball Club</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /*background-color: #013f00;*/
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            position: relative;
+            height: 300px; /* Adjust the height as needed */
+            background-image: url('fotos/team.png');
+            background-size: cover;
+            background-position: center;
+        }
+        h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .map {
+            height: 400px;
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #013f00;/*#f69c2e;*/
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #158b14;/*#013f00;*/
+        }
+
+
+        /* Stil für alle .main-Elemente */
+        .main {
+            padding: 20px 10% 40px 10%;
+            
+            color: black; /* Standardtextfarbe für die weißen divs */
+        }
+        @media screen and (max-width: 768px) {
+            .main {
+                padding: 20px 1px 40px 1px;
+            }
+        }
+
+        .main:nth-child(odd) {
+            background-image: url('fotos/baumreihe_endless_ohne.png'), url('fotos/baumreihe_endless_mit.png');
+            background-repeat: repeat-x, no-repeat;
+            background-position: left, right;
+            background-size: auto 36px, auto 36px;
+            background-position: left bottom, right bottom;
+        }
+
+        /* Stil für gerade .main-Elemente (1., 3., 5. usw.) */
+        .main:nth-child(even) {
+            background-color: #22bb23;/*#013f00; /* Grüner Hintergrund für gerade divs */
+            color: black;/*white; /* Weißer Text für die grünen divs */
+
+            background-image: url('fotos/baumreihe_endless_ohne_snow.png'), url('fotos/baumreihe_endless_mit_snow.png');
+            background-repeat: repeat-x, no-repeat;
+            background-position: left, right;
+            background-size: auto 36px, auto 36px;
+            background-position: left bottom, right bottom;
+        }
+
+        .main:last-child {
+            background-image: none;
+        }
+
+        /* teammitglieder Section Styles */
+        .teammitglieder {
+            /*background-color: #013f00;*/
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            background-image: none;
+
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            margin: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover img {
+            transform: rotateX(180deg);
+        }
+
+        .member-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: rotateX(180deg);
+            transition: transform 0.5s ease;
+            opacity: 0;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        .team-member:hover .member-info {
+            transform: rotateX(0deg);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .member-info p {
+            margin: 0;
+            padding: 5px;
+            font-weight: bold;
+            color: #f69c2e;
+        }
+
+        .player-number {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Black Forest Bowtruckles - Quadball Club</h1>
+    </header>
+    <div class="content main">
+        <h2>Über Quadball</h2>
+        <p>
+            Quadball ist ein aufregender Teamsport, den wir im Schwarzwald leidenschaftlich spielen. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+            Mehr zu den Regeln gibt es auf der <a href="https://dqbsport.de/das-ist-quidditch/">Website vom deutschen Quidditchbund</a>
+        </p>
+    </div>
+    <div class="training main">
+        <h2>Training</h2>
+        <p>Unsere Trainingszeiten sind:</p>
+        <ul>
+            <li>Donnerstag um 19:00 Uhr</li>
+            <li>Sonntag um 11:00 Uhr</li>
+        </ul>
+    </div>
+    <div class="karte main">
+        <h2>Standort</h2>
+        <p>
+            Wir trainieren immer auf dem Bolzplatz bei der Ökostation im Seepark Freiburg
+        </p>
+        <div class="map">
+            <!-- Updated iframe with the correct coordinates -->
+            <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=7.820665955795711,48.01240446196857,7.820665955795711,48.01240446196857&amp;layer=mapnik"></iframe>
+        </div>
+    </div>
+    <div class="team main">
+        <h2>Unser Team</h2>
+        <p>
+            Wir stehen für Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </p>
+    </div>
+    <div class="main teammitglieder" style="
+            background-image: url('fotos/baumreihe_endless_ohne_dark.png'), url('fotos/baumreihe_endless_mit_dark.png');
+            background-repeat: repeat-x, no-repeat;
+            background-position: left, right;
+            background-size: auto 36px, auto 36px;
+            background-position: left bottom, right bottom;
+    ">
+        <h2>Teammitglieder</h2>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="fotos/pers1.jpeg" alt="Team Member 1">
+                <div class="member-info">
+                    <p class="player-number">1</p>
+                    <p>Max Mustermann</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="fotos/pers2.jpeg" alt="Team Member 2">
+                <div class="member-info">
+                    <p class="player-number">2</p>
+                    <p>Erika Musterfrau</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="fotos/pers3.jpeg" alt="Team Member 3">
+                <div class="member-info">
+                    <p class="player-number">3</p>
+                    <p>Teammitglied 3</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="fotos/pers4.jpeg" alt="Team Member 4">
+                <div class="member-info">
+                    <p class="player-number">4</p>
+                    <p>Teammitglied 4</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="fotos/pers5.jpeg" alt="Team Member 5">
+                <div class="member-info">
+                    <p class="player-number">5</p>
+                    <p>Teammitglied 5</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="fotos/pers6.jpeg" alt="Team Member 6">
+                <div class="member-info">
+                    <p class="player-number">6</p>
+                    <p>Teammitglied 6</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="fotos/foto_person7.png" alt="Team Member 7">
+                <div class="member-info">
+                    <p class="player-number">7</p>
+                    <p>Teammitglied 7</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="fotos/foto_person8.png" alt="Team Member 8">
+                <div class="member-info">
+                    <p class="player-number">8</p>
+                    <p>Teammitglied 8</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="fotos/foto_person9.png" alt="Team Member 9">
+                <div class="member-info">
+                    <p class="player-number">9</p>
+                    <p>Teammitglied 9</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2023 Black Forest Bowtruckles - Quadball Club Freiburg
+    </footer>
+</body>
+</html>
