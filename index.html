@@ -19,13 +19,32 @@
             background-size: cover;
             background-position: center;
         }
-        h1 {
+        header h1 {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             margin: 0;
         }
+
+        header a {
+            position: absolute;
+            top: 10px;
+        }
+
+        header a:nth-child(1) {
+            right: 53px; /* Abstand zwischen den Logos anpassen */
+        }
+
+        header a:nth-child(2) {
+            right: 10px; /* Abstand zwischen den Logos anpassen */
+        }
+
+        header img {
+            width: 30px; /* Passen Sie die Größe des Logos nach Bedarf an */
+            height: auto;
+        }
+
         .content {
             padding: 20px;
         }
@@ -50,10 +69,14 @@
             color: #158b14;/*#013f00;*/
         }
 
+        a:hover {
+            color: #f69c2e;
+        }
+
 
         /* Stil für alle .main-Elemente */
         .main {
-            padding: 20px 10% 40px 10%;
+            padding: 1px 10% 40px 10%;
             
             color: black; /* Standardtextfarbe für die weißen divs */
         }
@@ -67,8 +90,8 @@
             background-image: url('fotos/baumreihe_endless_ohne.png'), url('fotos/baumreihe_endless_mit.png');
             background-repeat: repeat-x, no-repeat;
             background-position: left, right;
-            background-size: auto 36px, auto 36px;
-            background-position: left bottom, right bottom;
+            background-size: auto 36px, auto 50px;
+            background-position: right bottom, right bottom;
         }
 
         /* Stil für gerade .main-Elemente (1., 3., 5. usw.) */
@@ -79,13 +102,11 @@
             background-image: url('fotos/baumreihe_endless_ohne_snow.png'), url('fotos/baumreihe_endless_mit_snow.png');
             background-repeat: repeat-x, no-repeat;
             background-position: left, right;
-            background-size: auto 36px, auto 36px;
-            background-position: left bottom, right bottom;
+            background-size: auto 36px, auto 50px;
+            background-position: right bottom, right bottom;
         }
 
-        .main:last-child {
-            background-image: none;
-        }
+
 
         /* teammitglieder Section Styles */
         .teammitglieder {
@@ -154,12 +175,30 @@
         .player-number {
             font-size: 18px;
         }
+
+        footer img {
+            width: 30px; /* Passen Sie die Größe des Logos nach Bedarf an */
+            height: auto;
+        }
     </style>
 </head>
 <body>
     <header>
+        <a href="https://www.instagram.com/black_forest_bowtruckles/" target="_blank">
+            <img src="fotos/instagram.png" alt="Instagram-Logo">
+        </a>
+        <a href="https://www.facebook.com/blackforestbowtruckles" target="_blank">
+            <img src="fotos/facebook.png" alt="Facebook-Logo">
+        </a>
         <h1>Black Forest Bowtruckles - Quadball Club</h1>
     </header>
+    <div style="visibility : hidden"></div>
+    <div class="main einstiegstraining" style="background-color: #f69c2e;">
+        <h2>Einstiegstraining</h2>
+        <p>
+            Am 34.14.2001 haben wir um 25:63 Einstiegstraining. Schau gern bei uns vorbei.
+        </p>
+    </div>
     <div class="content main">
         <h2>Über Quadball</h2>
         <p>
@@ -169,6 +208,13 @@
     </div>
     <div class="training main">
         <h2>Training</h2>
+
+        <p>Du kannst gerne jederzeit bei unseren Trainings vorbei schauen. Melde dich dazu gerne bei uns über         
+            <a href="https://www.instagram.com/black_forest_bowtruckles/" target="_blank">Instagram</a>,
+            <a href="https://www.facebook.com/blackforestbowtruckles" target="_blank"> Facebook</a>
+            oder per E-Mail an hier.kommt.ne@mailadresse.hin . Oder schau einfach so vorbei.
+        </p>
+
         <p>Unsere Trainingszeiten sind:</p>
         <ul>
             <li>Donnerstag um 19:00 Uhr</li>
@@ -195,8 +241,8 @@
             background-image: url('fotos/baumreihe_endless_ohne_dark.png'), url('fotos/baumreihe_endless_mit_dark.png');
             background-repeat: repeat-x, no-repeat;
             background-position: left, right;
-            background-size: auto 36px, auto 36px;
-            background-position: left bottom, right bottom;
+            background-size: auto 36px, auto 50px;
+            background-position: right bottom, right bottom;
     ">
         <h2>Teammitglieder</h2>
         <div class="team-members">
@@ -266,7 +312,12 @@
         </div>
     </div>
     <footer>
-        &copy; 2023 Black Forest Bowtruckles - Quadball Club Freiburg
+        &copy; 2023 Black Forest Bowtruckles - Quadball Club Freiburg &nbsp; &nbsp; &nbsp;
+        <a href="https://www.instagram.com/black_forest_bowtruckles/" target="_blank">
+            <img src="fotos/instagram.png" alt="Instagram-Logo"></a> &nbsp;
+        <a href="https://www.facebook.com/blackforestbowtruckles" target="_blank">
+            <img src="fotos/facebook.png" alt="Facebook-Logo">
+        </a>
     </footer>
 </body>
 </html>
