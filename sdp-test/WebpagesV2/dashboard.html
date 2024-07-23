@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Design Projekt</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        .content {
+            flex: 1;
+            overflow: auto;
+            padding: 10px;
+            margin-bottom: 55px; /* Space for fixed nav-buttons */
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f8f9fa;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid #ddd;
+        }
+        .nav-buttons button {
+            flex: 1;
+            border: none;
+            background-color: #344a9a;
+            color: white;
+            padding: 5px 0;
+            font-size: 10px;
+            position: relative;
+        }
+        .nav-buttons button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 1px;
+            background-color: white;
+        }
+        .nav-buttons button:last-child::before {
+            display: none;
+        }
+        .nav-buttons button.active {
+            background-color: #00997d;
+        }
+        .nav-buttons button img {
+            display: block;
+            margin: 0 auto 5px;
+            width: 24px;
+            height: 24px;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background: #ddd;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #344a9a;
+            border: 2px solid white;
+        }
+        .timeline-item.active::before {
+            background: #00997d;
+        }
+        .timeline-item .time {
+            font-size: 14px;
+            color: #666;
+        }
+        .timeline-item .title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div id="timeline" class="page active">
+        <h1>Timeline</h1>
+        <p>Für weitere Infos auf die Einträge klicken</p>
+        <div class="timeline">
+            <div class="timeline-item" onclick="showDetails('17.10. 18:00', 'Einführungsveranstaltung', 'Details zur Einführungsveranstaltung')">
+                <div class="time">17.10. 18:00</div>
+                <div class="title">Einführungsveranstaltung</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('23.10. 18:10', 'Kastenausgabe', 'Details zur Kastenausgabe')">
+                <div class="time">23.10. 18:10</div>
+                <div class="title">Kastenausgabe</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('18.12. 23:59', 'Codeabgabe Meilenstein', 'Details zur Codeabgabe Meilenstein')">
+                <div class="time">18.12. 23:59</div>
+                <div class="title">Codeabgabe Meilenstein</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('20.12. 17:35', 'Meilenstein', 'Details zum Meilenstein', true)">
+                <div class="time">20.12. 17:35</div>
+                <div class="title">Meilenstein</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('19.1. 23:59', 'Abgabe Zwischenbericht', 'Details zur Abgabe des Zwischenberichts')">
+                <div class="time">19.1. 23:59</div>
+                <div class="title">Abgabe Zwischenbericht</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('12.2. 23:59', 'Abgabe Designpreis', 'Details zur Abgabe des Designpreises')">
+                <div class="time">12.2. 23:59</div>
+                <div class="title">Abgabe Designpreis</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('14.2.', 'Wettbewerb', 'Details zum Wettbewerb')">
+                <div class="time">14.2.</div>
+                <div class="title">Wettbewerb</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('17.2. 23:59', 'Abgabe Code', 'Details zur Abgabe des Codes')">
+                <div class="time">17.2. 23:59</div>
+                <div class="title">Abgabe Code</div>
+            </div>
+        </div>
+    </div>
+    <div id="abgaben" class="page">
+        <h1>Abgaben</h1>
+        <p>Inhalt der Abgaben-Seite</p>
+    </div>
+    <div id="gruppe" class="page">
+        <h1>Gruppe</h1>
+        <p>Inhalt der Gruppe-Seite</p>
+    </div>
+    <div id="materialien" class="page">
+        <h1>Materialien</h1>
+        <p>Inhalt der Materialien-Seite</p>
+    </div>
+    <div id="wettbewerb" class="page">
+        <h1>Wettbewerb</h1>
+        <p>Inhalt der Wettbewerb-Seite</p>
+    </div>
+    <div id="logout" class="page">
+        <h1>Logout</h1>
+        <p>Inhalt der Logout-Seite</p>
+    </div>
+</div>
+
+<div class="nav-buttons">
+    <button class="active" onclick="showPage('timeline')">
+        <img src="images/pictogram-timeline.png" alt="Timeline">
+        Timeline
+    </button>
+    <button onclick="showPage('abgaben')">
+        <img src="images/pictogram-abgaben.png" alt="Abgaben">
+        Abgaben
+    </button>
+    <button onclick="showPage('gruppe')">
+        <img src="images/pictogram-gruppe.png" alt="Gruppe">
+        Gruppe
+    </button>
+    <button onclick="showPage('materialien')">
+        <img src="images/pictogram-materialien.png" alt="Materialien">
+        Materialien
+    </button>
+    <button onclick="showPage('wettbewerb')">
+        <img src="images/pictogram-wettbewerb.png" alt="Wettbewerb">
+        Wettbewerb
+    </button>
+    <button onclick="showPage('logout')">
+        <img src="images/pictogram-logout.png" alt="Logout">
+        Logout
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="detailsContent"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+                <button type="button" class="btn btn-primary" id="changeDateButton" style="display: none;">Termin ändern</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPage(pageId) {
+        const pages = document.querySelectorAll('.page');
+        const buttons = document.querySelectorAll('.nav-buttons button');
+        
+        pages.forEach(page => {
+            page.classList.remove('active');
+            if (page.id === pageId) {
+                page.classList.add('active');
+            }
+        });
+
+        buttons.forEach(button => {
+            button.classList.remove('active');
+            if (button.textContent.trim().toLowerCase().includes(pageId)) {
+                button.classList.add('active');
+            }
+        });
+    }
+
+    function showDetails(date, title, details, showChangeButton = false) {
+        document.getElementById('detailsModalLabel').innerText = title;
+        document.getElementById('detailsContent').innerText = `Datum: ${date}\n\n${details}`;
+        document.getElementById('changeDateButton').style.display = showChangeButton ? 'block' : 'none';
+        $('#detailsModal').modal('show');
+    }
+
+    // Swipe functionality
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    document.addEventListener('touchstart', function(event) {
+        touchstartX = event.changedTouches[0].screenX;
+    }, false);
+
+    document.addEventListener('touchend', function(event) {
+        touchendX = event.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+        const activePage = document.querySelector('.page.active');
+        const pages = Array.from(document.querySelectorAll('.page'));
+        const index = pages.indexOf(activePage);
+        if (touchendX < touchstartX) {
+            // swipe left
+            if (index < pages.length - 1) {
+                showPage(pages[index + 1].id);
+            }
+        }
+        if (touchendX > touchstartX) {
+            // swipe right
+            if (index > 0) {
+                showPage(pages[index - 1].id);
+            }
+        }
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
