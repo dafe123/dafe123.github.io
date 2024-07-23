@@ -79,6 +79,7 @@
         .timeline-item {
             position: relative;
             margin-bottom: 20px;
+            padding-left: 20px;
         }
         .timeline-item::before {
             content: '';
@@ -102,12 +103,38 @@
             font-size: 16px;
             font-weight: bold;
         }
+        .abgaben-list {
+            list-style: none;
+            padding: 0;
+        }
+        .abgaben-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .abgaben-item img {
+            margin-right: 10px;
+        }
+        .abgaben-item .item-name {
+            flex: 1;
+        }
+        .abgaben-item .item-icons {
+            display: flex;
+            align-items: center;
+        }
+        .abgaben-item .item-icons img {
+            margin-right: 10px;
+            cursor: pointer; /* Zeigt an, dass es klickbar ist */
+        }
+        .abgaben-item .item-icons img:hover {
+            opacity: 0.8; /* Optional: Hover-Effekt für bessere Benutzerfreundlichkeit */
+        }
     </style>
 </head>
 <body>
 
 <div class="content">
-    <div id="timeline" class="page active">
+    <div id="timeline" class="page">
         <h1>Timeline</h1>
         <p>Für weitere Infos auf die Einträge klicken</p>
         <div class="timeline">
@@ -145,30 +172,67 @@
             </div>
         </div>
     </div>
+
     <div id="abgaben" class="page">
         <h1>Abgaben</h1>
-        <p>Inhalt der Abgaben-Seite</p>
+        <p>Hier können Sie die Abgaben herunterladen und den Status sehen:</p>
+        <ul class="abgaben-list">
+            <li class="abgaben-item">
+                <div class="item-name">Code Meilenstein</div>
+                <div class="item-icons">
+                    <a href="test.pdf" target="_blank">
+                        <img src="images/pdf-icon.png" alt="PDF">
+                    </a>
+                    <img src="images/upload-icon.png" alt="Upload">
+                    <img src="images/check-icon.png" alt="Haken" onclick="showSuccessPopup()">
+                </div>
+            </li>
+            <li class="abgaben-item">
+                <div class="item-name">Zwischenbericht</div>
+                <div class="item-icons">
+                    <a href="test.pdf" target="_blank">
+                        <img src="images/pdf-icon.png" alt="PDF">
+                    </a>
+                    <img src="images/upload-icon.png" alt="Upload">
+                    <img src="images/check-icon.png" alt="Haken" onclick="showSuccessPopup()">
+                </div>
+            </li>
+            <li class="abgaben-item">
+                <div class="item-name">Code Wettbewerb</div>
+                <div class="item-icons">
+                    <a href="test.pdf" target="_blank">
+                        <img src="images/pdf-icon.png" alt="PDF">
+                    </a>
+                    <img src="images/upload-icon.png" alt="Upload">
+                    <img src="images/check-icon.png" alt="Haken" onclick="showSuccessPopup()">
+                </div>
+            </li>
+        </ul>
     </div>
+
     <div id="gruppe" class="page">
         <h1>Gruppe</h1>
         <p>Inhalt der Gruppe-Seite</p>
     </div>
+
     <div id="materialien" class="page">
         <h1>Materialien</h1>
-        <p>Inhalt der Materialien-Seite</p>
+        <p>Hier findest du alle Infos für den NXT (bekannt über Gruppennummer)</p>
     </div>
+
     <div id="wettbewerb" class="page">
         <h1>Wettbewerb</h1>
         <p>Inhalt der Wettbewerb-Seite</p>
     </div>
+
     <div id="logout" class="page">
         <h1>Logout</h1>
-        <p>Inhalt der Logout-Seite</p>
+        <button id="logoutButton" class="btn btn-primary">Logout</button>
     </div>
 </div>
 
 <div class="nav-buttons">
-    <button class="active" onclick="showPage('timeline')">
+    <button onclick="showPage('timeline')">
         <img src="images/pictogram-timeline.png" alt="Timeline">
         Timeline
     </button>
@@ -213,6 +277,26 @@
     </div>
 </div>
 
+<!-- Success Popup -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Erfolg</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Du hast diese Abgabe bestanden.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     function showPage(pageId) {
         const pages = document.querySelectorAll('.page');
@@ -231,6 +315,9 @@
                 button.classList.add('active');
             }
         });
+
+        // Speichere die aktuelle Seite im localStorage
+        localStorage.setItem('activePageId', pageId);
     }
 
     function showDetails(date, title, details, showChangeButton = false) {
@@ -238,6 +325,10 @@
         document.getElementById('detailsContent').innerText = `Datum: ${date}\n\n${details}`;
         document.getElementById('changeDateButton').style.display = showChangeButton ? 'block' : 'none';
         $('#detailsModal').modal('show');
+    }
+
+    function showSuccessPopup() {
+        $('#successModal').modal('show');
     }
 
     // Swipe functionality
@@ -270,7 +361,19 @@
             }
         }
     }
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Beim Laden der Seite die gespeicherte Seite wiederherstellen
+        const savedPageId = localStorage.getItem('activePageId');
+        if (savedPageId) {
+            showPage(savedPageId);
+        } else {
+            // Standardseite, die beim ersten Laden angezeigt wird
+            showPage('timeline');
+        }
+    });
 </script>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
