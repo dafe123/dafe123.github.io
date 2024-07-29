@@ -6,29 +6,104 @@
     <title>System Design Projekt</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
+        /* Allgemeine Stile */
+        html, body {
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Verhindert Scrollen der gesamten Seite */
         }
 
-        /* Mobile Version */
-        .content {
-            flex: 1;
-            overflow: auto;
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        footer {
+            background-color: #b4b4b4;
             padding: 10px;
-            margin-bottom: 55px; /* Space for fixed nav-buttons */
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative; /* Header scrollt mit dem Inhalt */
+            margin-bottom: 55px;
+        }
+
+        header {
+            background-color: #344a9a;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative; /* Header scrollt mit dem Inhalt */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Sicherstellen, dass der Header über anderem Inhalt liegt */
+        }
+
+        header .logo {
+            max-height: 25px;
+            max-width: 66%;
+        }
+
+        .profile-button {
+            width: 40px;
+            height: 40px;
+            background-color: #00997d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .profile-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .profile-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .profile-menu.active {
+            display: block;
+        }
+
+        .profile-menu a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .profile-menu a:hover {
+            background-color: #f0f0f0;
         }
 
         .nav-buttons {
             display: flex;
             justify-content: space-around;
-            background-color: #f8f9fa;
+            background-color: #344a9a;
             position: fixed;
             bottom: 0;
             width: 100%;
             border-top: 1px solid #ddd;
+            z-index: 1000; /* Sicherstellen, dass Navigation über anderem Inhalt liegt */
         }
 
         .nav-buttons button {
@@ -72,6 +147,21 @@
 
         .page.active {
             display: block;
+            padding: 20px;
+        }
+
+        .content {
+            margin: 0;
+            overflow-y: auto; /* Nur der Inhalt scrollt */
+            flex: 1;
+        }
+
+        .msg-box {
+            background-color: #ffe863;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
         }
 
         .timeline {
@@ -98,7 +188,7 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -29px; /* Adjusted for better alignment */
+            left: -29px; /* Bessere Ausrichtung */
             top: 0;
             width: 20px;
             height: 20px;
@@ -121,53 +211,11 @@
             font-weight: bold;
         }
 
-        .abgaben-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .abgaben-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .abgaben-item img {
-            margin-right: 10px;
-        }
-
-        .abgaben-item .item-name {
-            flex: 1;
-        }
-
-        .abgaben-item .item-icons {
-            display: flex;
-            align-items: center;
-        }
-
-        .abgaben-item .item-icons img {
-            margin-right: 10px;
-            cursor: pointer; /* Zeigt an, dass es klickbar ist */
-        }
-
-        .abgaben-item .item-icons img:hover {
-            opacity: 0.8; /* Optional: Hover-Effekt für bessere Benutzerfreundlichkeit */
-        }
-
-        .abgaben-item .upload-btn {
-            display: block;
-            margin: 20px 0;
-            padding: 10px 15px;
-            background-color: #00997d;
-            color: white;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        /* Desktop Version */
+        /* Desktop-Version */
         @media (min-width: 768px) {
             body {
                 flex-direction: row;
+                overflow: visible; /* Erlaubt Scrollen in Desktop-Version */
             }
 
             .nav-buttons {
@@ -199,53 +247,67 @@
                 margin: 0 10px 0 0;
             }
 
-            .content {
+            header {
                 margin-bottom: 0;
+            }
+
+            .content {
+                margin: 0;
                 padding: 20px;
                 flex: 1;
             }
-
-            .page {
-                display: none;
-            }
-
-            .page.active {
-                display: block;
+            footer {
+                margin-bottom: 0;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="nav-buttons">
-    <button onclick="showPage('timeline')">
+
+
+<!-- Navigation -->
+<nav class="nav-buttons">
+    <button id="homeButton" onclick="showPage('home', this)">
+        <img src="images/pictogram-home.png" alt="Home">
+        Home
+    </button>
+    <button id="timelineButton" onclick="showPage('timeline', this)">
         <img src="images/pictogram-timeline.png" alt="Timeline">
         Timeline
     </button>
-    <button onclick="showPage('abgaben')">
-        <img src="images/pictogram-abgaben.png" alt="Abgaben">
-        Abgaben
-    </button>
-    <button onclick="showPage('gruppe')">
-        <img src="images/pictogram-gruppe.png" alt="Gruppe">
-        Gruppe
-    </button>
-    <button onclick="showPage('materialien')">
+    <button id="materialienButton" onclick="showPage('materialien', this)">
         <img src="images/pictogram-materialien.png" alt="Materialien">
         Materialien
     </button>
-    <button onclick="showPage('wettbewerb')">
+    <button id="wettbewerbButton" onclick="showPage('wettbewerb', this)">
         <img src="images/pictogram-wettbewerb.png" alt="Wettbewerb">
         Wettbewerb
     </button>
-    <button onclick="showPage('logout')">
-        <img src="images/pictogram-logout.png" alt="Logout">
-        Logout
-    </button>
-</div>
+</nav>
 
-<div class="content">
-    <div id="timeline" class="page active">
+<!-- Inhalt -->
+<div class="content" id="content">
+    <!-- Header -->
+    <header>
+        <img class="logo" src="https://uni-freiburg.de/en/wp-content/themes/unifreiburg-theme/img/ufr-logo-white.svg" alt="University of Freiburg">
+        <div class="profile-button" onclick="toggleProfileMenu()">
+            <img src="images/pictogram-profil.png" alt="Profil">
+        </div>
+        <div class="profile-menu" id="profileMenu">
+            <a href="#">Logout</a>
+            <a href="#">Gruppe</a>
+        </div>
+    </header>
+    <div id="home" class="page active">
+        <h1>Home</h1>
+        <p>Willkommen auf der Startseite des System Design Projekts.</p>
+        <div class="msg-box">
+            Willkommen zu der Veranstaltung System Design Projekt. Am 10.10. findet in den Hörsälen bla und bla die Einstiegsvorlesung statt.
+        </div>
+    </div>
+
+    <div id="timeline" class="page">
         <h1>Timeline</h1>
         <p>Für weitere Infos auf die Einträge klicken</p>
         <div class="timeline">
@@ -261,210 +323,91 @@
                 <div class="time">18.12. 23:59</div>
                 <div class="title">Codeabgabe Meilenstein</div>
             </div>
-            <div class="timeline-item" onclick="showDetails('20.12. 17:35', 'Meilenstein', 'Details zum Meilenstein', true)">
-                <div class="time">20.12. 17:35</div>
-                <div class="title">Meilenstein</div>
+            <div class="timeline-item" onclick="showDetails('26.1. 14:00', 'Abgabe Dokumentation', 'Details zur Abgabe Dokumentation')">
+                <div class="time">26.1. 14:00</div>
+                <div class="title">Abgabe Dokumentation</div>
             </div>
-            <div class="timeline-item" onclick="showDetails('19.1. 23:59', 'Abgabe Zwischenbericht', 'Details zur Abgabe des Zwischenberichts')">
-                <div class="time">19.1. 23:59</div>
-                <div class="title">Abgabe Zwischenbericht</div>
-            </div>
-            <div class="timeline-item" onclick="showDetails('12.2. 23:59', 'Abgabe Designpreis', 'Details zur Abgabe des Designpreises')">
-                <div class="time">12.2. 23:59</div>
-                <div class="title">Abgabe Designpreis</div>
-            </div>
-            <div class="timeline-item" onclick="showDetails('14.2.', 'Wettbewerb', 'Details zum Wettbewerb')">
-                <div class="time">14.2.</div>
+            <div class="timeline-item" onclick="showDetails('02.02. 10:00', 'Wettbewerb', 'Details zum Wettbewerb')">
+                <div class="time">02.02. 10:00</div>
                 <div class="title">Wettbewerb</div>
             </div>
-            <div class="timeline-item" onclick="showDetails('17.2. 23:59', 'Abgabe Code', 'Details zur Abgabe des Codes')">
-                <div class="time">17.2. 23:59</div>
-                <div class="title">Abgabe Code</div>
-            </div>
         </div>
-    </div>
-
-    <div id="abgaben" class="page">
-        <h1>Abgaben</h1>
-        <p>Hier können Sie die Abgaben hochladen und den Status sehen:</p>
-        <ul class="abgaben-list">
-            <li class="abgaben-item">
-                <div class="item-name">Code Meilenstein</div>
-                <div class="item-icons">
-                    <a href="test.pdf" target="_blank">
-                        <img src="images/pdf-icon.png" alt="PDF">
-                    </a>
-                    <img src="images/upload-icon.png" alt="Upload">
-                    <img src="images/check-icon.png" alt="Haken" onclick="showSuccessPopup()">
-                </div>
-            </li>
-            <li class="abgaben-item">
-                <div class="item-name">Zwischenbericht</div>
-                <div class="item-icons">
-                    <a href="test.pdf" target="_blank">
-                        <img src="images/pdf-icon.png" alt="PDF">
-                    </a>
-                    <img src="images/upload-icon.png" alt="Upload">
-                    <img src="images/check-icon.png" alt="Haken" onclick="showSuccessPopup()">
-                </div>
-            </li>
-            <li class="abgaben-item">
-                <div class="item-name">Code Wettbewerb</div>
-                <div class="item-icons">
-                    <a href="test.pdf" target="_blank">
-                        <img src="images/pdf-icon.png" alt="PDF">
-                    </a>
-                    <img src="images/upload-icon.png" alt="Upload">
-                    <img src="images/check-icon.png" alt="Haken" onclick="showSuccessPopup()">
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <div id="gruppe" class="page">
-        <h1>Gruppe</h1>
-        <p>Inhalt der Gruppe-Seite</p>
     </div>
 
     <div id="materialien" class="page">
         <h1>Materialien</h1>
-        <p>Hier findest du alle Infos für den NXT (bekannt über Gruppennummer).</p>
+        <p>Hier sind einige Materialien für das Projekt.</p>
     </div>
 
     <div id="wettbewerb" class="page">
         <h1>Wettbewerb</h1>
-        <p>Der Inhalt wird rechzeitig zum Wettbewerb freigeschaltet</p>
+        <p>Informationen zum Wettbewerb.</p>
     </div>
 
-    <div id="logout" class="page">
-        <h1>Logout</h1>
-        <button id="logoutButton" class="btn btn-primary">Logout</button>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="detailsModalLabel">Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="detailsContent"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
-                <button type="button" class="btn btn-primary" id="changeDateButton" style="display: none;">Termin ändern</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Success Popup -->
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="successModalLabel">Erfolg</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Du hast diese Abgabe bestanden.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
-            </div>
-        </div>
-    </div>
+    <footer>
+        <a href="impressum.html">Impressum</a>
+    </footer>
 </div>
 
 <script>
-    function showPage(pageId) {
+    let startX = null;
+
+    function toggleProfileMenu() {
+        const menu = document.getElementById('profileMenu');
+        menu.classList.toggle('active');
+    }
+
+    function showPage(pageId, button) {
         const pages = document.querySelectorAll('.page');
-        const buttons = document.querySelectorAll('.nav-buttons button');
-        
-        pages.forEach(page => {
-            page.classList.remove('active');
-            if (page.id === pageId) {
-                page.classList.add('active');
-            }
-        });
+        pages.forEach(page => page.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
 
-        buttons.forEach(button => {
-            button.classList.remove('active');
-            if (button.textContent.trim().toLowerCase().includes(pageId)) {
-                button.classList.add('active');
-            }
-        });
-
-        // Speichere die aktuelle Seite im localStorage
-        localStorage.setItem('activePageId', pageId);
+        const navButtons = document.querySelectorAll('.nav-buttons button');
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
     }
 
-    function showDetails(date, title, details, showChangeButton = false) {
-        document.getElementById('detailsModalLabel').innerText = title;
-        document.getElementById('detailsContent').innerText = `Datum: ${date}\n\n${details}`;
-        document.getElementById('changeDateButton').style.display = showChangeButton ? 'block' : 'none';
-        $('#detailsModal').modal('show');
-    }
-
-    function showSuccessPopup() {
-        $('#successModal').modal('show');
-    }
-
-    function uploadFile() {
-        alert('Upload-Funktion wird implementiert');
-    }
-
-    // Swipe functionality
-    let touchstartX = 0;
-    let touchendX = 0;
-
-    document.addEventListener('touchstart', function(event) {
-        touchstartX = event.changedTouches[0].screenX;
-    }, false);
-
-    document.addEventListener('touchend', function(event) {
-        touchendX = event.changedTouches[0].screenX;
-        handleSwipe();
-    }, false);
-
-    function handleSwipe() {
-        const activePage = document.querySelector('.page.active');
-        const pages = Array.from(document.querySelectorAll('.page'));
-        const index = pages.indexOf(activePage);
-        if (touchendX < touchstartX) {
-            // swipe left
-            if (index < pages.length - 1) {
-                showPage(pages[index + 1].id);
-            }
+    function showDetails(time, title, details, active = false) {
+        let detailString = "Zeit: " + time + "\nTitel: " + title + "\n" + details;
+        if (active) {
+            detailString += "\nStatus: Aktiv";
         }
-        if (touchendX > touchstartX) {
-            // swipe right
-            if (index > 0) {
-                showPage(pages[index - 1].id);
+        alert(detailString);
+    }
+
+    function handleTouchStart(event) {
+        startX = event.touches[0].clientX;
+    }
+
+    function handleTouchMove(event) {
+        if (!startX) return;
+
+        const xDiff = startX - event.touches[0].clientX;
+        const minSwipeDistance = 100; // Erhöhtes Mindest-Swipe-Distanz
+
+        if (Math.abs(xDiff) > minSwipeDistance) {
+            const activeButton = document.querySelector('.nav-buttons button.active');
+            let newActiveButton;
+
+            if (xDiff > 0) {
+                newActiveButton = activeButton.nextElementSibling;
+            } else {
+                newActiveButton = activeButton.previousElementSibling;
+            }
+
+            if (newActiveButton) {
+                newActiveButton.click();
+                startX = null; // Reset startX
             }
         }
     }
 
-    document.addEventListener('DOMContentLoaded', (event) => {
-        // Beim Laden der Seite die gespeicherte Seite wiederherstellen
-        const savedPageId = localStorage.getItem('activePageId');
-        if (savedPageId) {
-            showPage(savedPageId);
-        } else {
-            // Standardseite, die beim ersten Laden angezeigt wird
-            showPage('timeline');
-        }
-    });
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
+
+    // Initialisierung
+    document.getElementById('homeButton').classList.add('active');
 </script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
