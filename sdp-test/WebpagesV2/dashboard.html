@@ -164,6 +164,13 @@
             border: 1px solid #ddd;
         }
 
+        .change-date {
+            padding:5px;
+            border-radius: 8px;
+            background-color:#ffe863;
+            font-size: small;
+        }
+
         .timeline {
             position: relative;
             padding-left: 40px;
@@ -183,6 +190,7 @@
             position: relative;
             margin-bottom: 20px;
             padding-left: 20px;
+            cursor: pointer;
         }
 
         .timeline-item::before {
@@ -351,13 +359,25 @@
                 <div class="time">18.12. 23:59</div>
                 <div class="title">Codeabgabe Meilenstein</div>
             </div>
-            <div class="timeline-item" onclick="showDetails('26.1. 14:00', 'Abgabe Dokumentation', 'Details zur Abgabe Dokumentation')">
-                <div class="time">26.1. 14:00</div>
-                <div class="title">Abgabe Dokumentation</div>
+            <div class="timeline-item" onclick="showDetails('20.12. 17:35', 'Meilenstein', 'Details zum Meilenstein', true)">
+                <div class="time">20.12. 17:35 <span class="change-date">Termin ändern</span></div>
+                <div class="title">Meilenstein</div>
             </div>
-            <div class="timeline-item" onclick="showDetails('02.02. 10:00', 'Wettbewerb', 'Details zum Wettbewerb')">
-                <div class="time">02.02. 10:00</div>
+            <div class="timeline-item" onclick="showDetails('19.1. 23:59', 'Abgabe Zwischenbericht', 'Details zur Abgabe des Zwischenberichts')">
+                <div class="time">19.1. 23:59</div>
+                <div class="title">Abgabe Zwischenbericht</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('12.2. 23:59', 'Abgabe Designpreis', 'Details zur Abgabe des Designpreises')">
+                <div class="time">12.2. 23:59</div>
+                <div class="title">Abgabe Designpreis</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('14.2. geschätzt 12:35', 'Wettbewerb', 'Details zum Wettbewerb')">
+                <div class="time">14.2. geschätzt 12:35</div>
                 <div class="title">Wettbewerb</div>
+            </div>
+            <div class="timeline-item" onclick="showDetails('17.2. 23:59', 'Abgabe Code', 'Details zur Abgabe des Codes')">
+                <div class="time">17.2. 23:59</div>
+                <div class="title">Abgabe Code</div>
             </div>
         </div>
     </div>
