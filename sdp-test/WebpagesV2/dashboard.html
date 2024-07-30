@@ -211,6 +211,27 @@
             font-weight: bold;
         }
 
+        .parallax {
+            position: absolute;
+            bottom: 35px;
+            height: 30%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+        }
+
+        .parallax-mountains {
+            background-image: url('images/parallax-mountains.svg');
+            width: 100%;
+            z-index: -2;
+        }
+
+        .parallax-city {
+            background-image: url('images/parallax-city.svg');
+            width: 100%;
+            z-index: -1;
+        }
+
         /* Desktop-Version */
         @media (min-width: 768px) {
             body {
@@ -259,12 +280,19 @@
             footer {
                 margin-bottom: 0;
             }
+            .parallax {
+                bottom: 0;
+            }
         }
     </style>
 </head>
 <body>
 
-
+<!-- Hintergrundbilder -->
+<div class="background">
+    <div class="parallax parallax-city"></div>
+    <div class="parallax parallax-mountains"></div>
+</div>
 
 <!-- Navigation -->
 <nav class="nav-buttons">
@@ -365,6 +393,26 @@
         const navButtons = document.querySelectorAll('.nav-buttons button');
         navButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
+        
+        // Update Parallax-Effekte beim Seitenwechsel
+        updateParallax(pageId);
+    }
+
+    function updateParallax(pageId) {
+        const parallaxMountains = document.querySelector('.parallax-mountains');
+        const parallaxCity = document.querySelector('.parallax-city');
+
+        // Setze die Hintergrund-Positionen basierend auf der aktuellen Seite
+        const pageIndex = Array.from(document.querySelectorAll('.page')).indexOf(document.getElementById(pageId));
+        const totalPages = document.querySelectorAll('.page').length;
+
+        // Berechne die Offset-Position für die Parallax-Hintergründe
+        const offsetMountains = (pageIndex / totalPages) * 50; // Weniger Offset für langsame Bewegung
+        const offsetCity = (pageIndex / totalPages) * 200;    // Mehr Offset für schnellere Bewegung
+
+        // Update der Hintergrundpositionen
+        parallaxMountains.style.backgroundPositionX = `-${offsetMountains}px`;
+        parallaxCity.style.backgroundPositionX = `-${offsetCity}px`;
     }
 
     function showDetails(time, title, details, active = false) {
