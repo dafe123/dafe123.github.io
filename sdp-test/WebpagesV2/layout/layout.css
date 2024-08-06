@@ -1,0 +1,290 @@
+    /* Allgemeine Stile */
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden; /* Verhindert Scrollen der gesamten Seite */
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    footer {
+        background-color: #b4b4b4;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative; /* Header scrollt mit dem Inhalt */
+        margin-bottom: 55px;
+    }
+
+    header {
+        background-color: #344a9a;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative; /* Header scrollt mit dem Inhalt */
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000; /* Sicherstellen, dass der Header über anderem Inhalt liegt */
+    }
+
+    header .logo {
+        max-height: 25px;
+        max-width: 66%;
+    }
+
+    .profile-button {
+        width: 40px;
+        height: 40px;
+        background-color: #00997d;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .profile-button img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .profile-menu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background-color: white;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        z-index: 1001;
+    }
+
+    .profile-menu.active {
+        display: block;
+    }
+
+    .profile-menu a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .profile-menu a:hover {
+        background-color: #f0f0f0;
+    }
+
+    .nav-buttons {
+        display: flex;
+        justify-content: space-around;
+        background-color: #344a9a;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid #ddd;
+        z-index: 1000; /* Sicherstellen, dass Navigation über anderem Inhalt liegt */
+    }
+
+    .nav-buttons button {
+        flex: 1;
+        border: none;
+        background-color: #344a9a;
+        color: white;
+        padding: 5px 0;
+        font-size: 10px;
+        position: relative;
+    }
+
+    .nav-buttons button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 1px;
+        background-color: white;
+    }
+
+    .nav-buttons button:last-child::before {
+        display: none;
+    }
+
+    .nav-buttons button.active {
+        background-color: #00997d;
+    }
+
+    .nav-buttons button img {
+        display: block;
+        margin: 0 auto 5px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .page {
+        display: none;
+        transition: left 0.5s ease;
+    }
+
+    .page.active {
+        display: block;
+        padding: 20px;
+    }
+
+    .content {
+        margin: 0;
+        overflow-y: auto; /* Nur der Inhalt scrollt */
+        flex: 1;
+    }
+
+    .msg-box {
+        background-color: #ffe863;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        border: 1px solid #ddd;
+    }
+
+    .change-date {
+        padding:5px;
+        border-radius: 8px;
+        background-color:#ffe863;
+        font-size: small;
+    }
+
+    .timeline {
+        position: relative;
+        padding-left: 40px;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        width: 2px;
+        background: #ddd;
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 20px;
+        padding-left: 20px;
+        cursor: pointer;
+    }
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -29px; /* Bessere Ausrichtung */
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #344a9a;
+        border: 2px solid white;
+    }
+
+    .timeline-item.active::before {
+        background: #00997d;
+    }
+
+    .timeline-item .time {
+        font-size: 14px;
+        color: #666;
+    }
+
+    .timeline-item .title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .parallax {
+        position: absolute;
+        bottom: 35px;
+        height: 30%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        transition: transform 0.5s ease;
+    }
+
+    .parallax-mountains {
+        background-image: url('images/parallax-mountains.svg');
+        width: 100%;
+        z-index: -2;
+        background-repeat: repeat-x;
+    }
+
+    .parallax-city {
+        background-image: url('images/parallax-city.svg');
+        width: 100%;
+        z-index: -1;
+        background-repeat: repeat-x;
+    }
+
+    /* Desktop-Version */
+    @media (min-width: 768px) {
+        body {
+            flex-direction: row;
+            overflow: visible; /* Erlaubt Scrollen in Desktop-Version */
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            width: 200px;
+            height: 100vh;
+            position: static;
+            border-right: 1px solid #ddd;
+            border-top: none;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 10px 0;
+        }
+
+        .nav-buttons button {
+            flex: none;
+            padding: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            border-bottom: 1px solid #ddd; /* Separator */
+        }
+
+        .nav-buttons button img {
+            width: 32px;
+            height: 32px;
+            margin: 0 10px 0 0;
+        }
+
+        header {
+            margin-bottom: 0;
+        }
+
+        .content {
+            margin: 0;
+            padding: 20px;
+            flex: 1;
+        }
+        footer {
+            margin-bottom: 0;
+        }
+        .parallax {
+            bottom: 0;
+        }
+    }
