@@ -1,0 +1,82 @@
+ 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDP - Gruppe wechseln</title>
+    <link rel="stylesheet" href="layout/layout.css">
+    <style>
+        .content-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .button-container button {
+            background-color: #344a9a;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .button-container button:hover {
+            background-color: #00997d;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Hintergrundbilder -->
+  <div class="background">
+    <div class="parallax parallax-city"></div>
+    <div class="parallax parallax-mountains"></div>
+  </div>
+
+  <!-- Zurück Button -->
+  <nav class="nav-buttons">
+    <button id="homeButton" onclick="window.location.href='groupmgr.html'">
+        <img src="images/pictogram-home.png" alt="Home">
+        Abbrechen
+    </button>
+  </nav>
+
+  <!-- Inhalt -->
+  <div class="content" id="content">
+    <!-- Header -->
+    <header>
+      <img class="logo" src="https://uni-freiburg.de/en/wp-content/themes/unifreiburg-theme/img/ufr-logo-white.svg" alt="University of Freiburg">
+
+    </header>
+
+    <div id="home" class="page active">
+        <div class="content-container">
+            <p>Du kannst eine neue Gruppe gründen oder einer bestehenden Gruppe eine Beitrittsanfrage senden</p>
+            <div class="button-container">
+                <button onclick="window.location.href='groupmgr.html'">Neue Gruppe erstellen</button>
+                <button onclick="window.location.href='join.html'">Bestehender Gruppe beitreten</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <a href="impressum.html">Impressum</a>
+    </footer>
+  </div>
+
+  <script>
+      function toggleProfileMenu() {
+          const menu = document.getElementById('profileMenu');
+          menu.classList.toggle('active');
+      }
+  </script>
+</body>
+</html>
