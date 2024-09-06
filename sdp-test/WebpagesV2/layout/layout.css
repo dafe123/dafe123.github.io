@@ -240,6 +240,40 @@
         background-repeat: repeat-x;
     }
 
+
+    .error-message {
+        color: red;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .explanation {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 40px;
+        max-width: 600px;
+        line-height: 1.5;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .button-container button {
+        background-color: #344a9a;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .button-container button:hover {
+        background-color: #00997d;
+    }
+
     /* Desktop-Version */
     @media (min-width: 768px) {
         body {

@@ -4,34 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SDP - Gruppe wechseln</title>
+    <title>SDP - Zugriff verweigert</title>
     <link rel="stylesheet" href="layout/layout.css">
-    <style>
-        .content-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .button-container {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .button-container button {
-            background-color: #344a9a;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .button-container button:hover {
-            background-color: #00997d;
-        }
-    </style>
 </head>
 <body>
 
@@ -43,9 +17,9 @@
 
   <!-- Zurück Button -->
   <nav class="nav-buttons">
-    <button id="homeButton" onclick="window.location.href='groupmgr.html'">
+    <button id="homeButton" onclick="window.location.href='https://sdp.uni-freiburg.de/kc_landing.html'">
         <img src="images/pictogram-home.png" alt="Home">
-        Abbrechen
+        Zurück zum Login
     </button>
   </nav>
 
@@ -59,10 +33,19 @@
 
     <div id="home" class="page active">
         <div class="content-container">
-            <p>Du kannst eine neue Gruppe gründen oder einer bestehenden Gruppe eine Beitrittsanfrage senden</p>
+            <div class="error-message">Zugriff verweigert</div>
+            <div class="explanation">
+                Du hast dich zwar erfolgreich mit deinem RZ-Kürzel angemeldet, du bist aber im HISinOne nicht für die Veranstaltung angemeldet.
+                Wenn du dich gerade eben erst im HISinOne angemeldet hast, probiere es später noch einmal.
+                Es kann bis zu 12h dauern, bis der Login freigeschaltet wird.
+            </div>
             <div class="button-container">
-                <button onclick="window.location.href='groupmgr.html'">Neue Gruppe erstellen</button>
-                <button onclick="window.location.href='join.html'">Bestehender Gruppe beitreten</button>
+                <a href="https://campus.uni-freiburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&unitId=2480&periodId=2483&navigationPosition=hisinoneMeinStudium,hisinoneStudyPlanner">
+                    Zur Veranstaltung im HISinOne
+                </a>
+                <a href="https://sdp.uni-freiburg.de/kc_landing.html">
+                    Zurück zum Login
+                </a>
             </div>
         </div>
     </div>

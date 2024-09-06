@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SDP - Gruppen Management</title>
+    <link rel="icon" href="images/u-fr-icon-76x76.png">
     <link rel="stylesheet" href="layout/layout.css">
     <style>
         .title-container {
@@ -52,34 +53,6 @@
             width: 16px;
             height: 16px;
         }
-
-        .button-container {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .button-container button {
-            background-color: #344a9a;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .button-container button:hover {
-            background-color: #00997d;
-        }
-
-        .button-container .back-button {
-            background-color: #b4b4b4;
-        }
-
-        .button-container .back-button:hover {
-            background-color: #999;
-        }
     </style>
 </head>
 <body>
@@ -92,8 +65,8 @@
 
   <!-- Zurück Button -->
   <nav class="nav-buttons">
-    <button id="homeButton" onclick="window.location.href='dashboard.html'">
-        <img src="images/pictogram-home.png" alt="Home">
+    <button id="homeButton" onclick="window.location.href='dashboard.php'">
+        <img src="images/pictogram-back.png" alt="back">
         Zurück
     </button>
   </nav>
@@ -144,14 +117,14 @@
           </div>
       </div>
       <div class="button-container">
-          <button onclick="window.location.href='invitation.html'">Kommilitonen in Gruppe einladen</button>
-          <button onclick="window.location.href='change.html'">Gruppe wechseln</button>
+          <button onclick="window.location.href='invitation.php'">Kommilitonen in Gruppe einladen</button>
+          <button onclick="window.location.href='change.php'">Gruppe wechseln</button>
           <button>Bild ändern</button>
       </div>
     </div>
     
     <footer>
-        <a href="impressum.html">Impressum</a>
+        <a href="impressum.php">Impressum</a>
     </footer>
   </div>
 

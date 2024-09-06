@@ -46,7 +46,7 @@
         </div>
         <div class="profile-menu" id="profileMenu">
             <a href="#">Logout</a>
-            <a href="groupmgr.html">Gruppe</a>
+            <a href="groupmgr.php">Gruppe</a>
         </div>
     </header>
     <div id="home" class="page active">
@@ -107,7 +107,7 @@
     </div>
 
     <footer>
-        <a href="impressum.html">Impressum</a>
+        <a href="impressum.php">Impressum</a>
     </footer>
 </div>
 

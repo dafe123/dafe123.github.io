@@ -89,7 +89,7 @@
 
   <!-- Zurück Button -->
   <nav class="nav-buttons">
-    <button id="homeButton" onclick="window.location.href='change.html'">
+    <button id="homeButton" onclick="window.location.href='change.php'">
         <img src="images/pictogram-home.png" alt="Home">
         Abbrechen
     </button>
@@ -100,14 +100,6 @@
     <!-- Header -->
     <header>
       <img class="logo" src="https://uni-freiburg.de/en/wp-content/themes/unifreiburg-theme/img/ufr-logo-white.svg" alt="University of Freiburg">
-      <div class="profile-button" onclick="toggleProfileMenu()">
-          <img src="images/pictogram-profil.png" alt="Profil">
-      </div>
-      <div class="profile-menu" id="profileMenu">
-          <a href="#">Einstellungen</a>
-          <a href="#">Profil</a>
-          <a href="#">Abmelden</a>
-      </div>
     </header>
 
     <div id="home" class="page active">
@@ -148,7 +140,7 @@
     </div>
 
     <footer>
-        <a href="impressum.html">Impressum</a>
+        <a href="impressum.php">Impressum</a>
     </footer>
   </div>
 
@@ -175,7 +167,7 @@
 
       function changeGroup() {
           // Logik zum Wechseln der Gruppe
-          window.location.href = 'groupmgr.html-FallsAufnahmeAusstehend';
+          window.location.href = 'groupmgr.php-FallsAufnahmeAusstehend';
       }
 
       window.onclick = function(event) {
