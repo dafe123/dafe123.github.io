@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Forest Bowtruckles</title>
+  <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-container">
+        <div class="logo">
+          <a href="index.html">Black Forest Bowtruckles</a>
+        </div>
+        <button class="burger-menu" aria-label="Menü öffnen">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="quadball.html">Was ist Quadball?</a></li>
+          <li><a href="about.html">Über uns</a></li>
+          <li><a href="join.html">Mach mit</a></li>
+          <li><a href="imprint.html">Impressum</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p>Scrollen für mehr</p>
+      </div>
+    </section>
+
+    <section class="news-slider">
+      <h2>Aktuelles</h2>
+      <div class="slider">
+        <div class="card">
+          <img src="news1.jpg" alt="News 1">
+          <h3>Überschrift 1</h3>
+          <p>Kurzer Text zu den Neuigkeiten...</p>
+        </div>
+        <div class="card">
+          <img src="news2.jpg" alt="News 2">
+          <h3>Überschrift 2</h3>
+          <p>Kurzer Text zu den Neuigkeiten...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rules">
+      <h2>Was ist Quadball?</h2>
+      <p>Quadball ist ein spannender Teamsport...</p>
+      <a href="quadball.html">Mehr erfahren</a>
+    </section>
+
+    <section class="team-intro">
+      <h2>Unser Team</h2>
+      <p>Lerne die Black Forest Bowtruckles kennen...</p>
+      <a href="about.html">Über uns</a>
+    </section>
+
+    <section class="training">
+      <h2>Trainingszeiten</h2>
+      <p>Montag, 18:00 - 20:00 Uhr in Freiburg</p>
+      <a href="join.html">Mach mit!</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Black Forest Bowtruckles</p>
+    <a href="imprint.html">Impressum & Datenschutz</a>
+  </footer>
+
+    <script>
+    // JavaScript für das Burger-Menü
+    document.querySelector('.burger-menu').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
+
