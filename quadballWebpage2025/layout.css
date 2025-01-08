@@ -194,3 +194,147 @@ header {
 .gallery img:hover {
   transform: scale(1.05);
 }
+
+.team-section {
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+}
+
+.team-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.team-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.team-text p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.team-text .btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.team-text .btn:hover {
+  background-color: #555;
+}
+
+.team-image {
+  flex: 1;
+  min-width: 250px;
+}
+
+.team-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+  .team-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .team-text {
+    margin-bottom: 1rem;
+  }
+
+  .team-text .btn {
+    width: 100%;
+  }
+}
+
+.quadball-section {
+  padding: 2rem 1rem;
+  background-color: #fff;
+}
+
+.quadball-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.quadball-image {
+  flex: 1;
+  min-width: 250px;
+}
+
+.quadball-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quadball-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.quadball-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.quadball-text p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.quadball-text .btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.quadball-text .btn:hover {
+  background-color: #555;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+  .quadball-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .quadball-text {
+    margin-top: 1rem;
+  }
+
+  .quadball-text .btn {
+    width: 100%;
+  }
+}
