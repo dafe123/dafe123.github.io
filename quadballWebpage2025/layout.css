@@ -5,7 +5,7 @@ body {
 }
 
 header {
-  background: #333;
+  background: #001500;
   color: #fff;
   padding: 1rem 0;
 }
@@ -28,19 +28,20 @@ header nav ul li a {
 }
 
 .hero {
-  background: url('team.jpg') no-repeat center center/cover;
+  background: url('images/team.jpg') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: #00B000;
 }
 
 .hero-text {
   text-align: center;
   font-size: 1.5rem;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   padding: 1rem;
+  border-radius: 15px;
 }
 
 .news-slider {
@@ -80,7 +81,7 @@ header nav ul li a {
 footer {
   text-align: center;
   padding: 1rem;
-  background: #333;
+  background: #001500;
   color: #fff;
 }
 
@@ -92,7 +93,7 @@ body {
 }
 
 header {
-  background: #333;
+  background: #001500;
   color: #fff;
   padding: 1rem 0;
 }
@@ -102,6 +103,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
+  height: 30px;
 }
 
 .logo a {
@@ -152,7 +154,7 @@ header {
   .nav-links {
     display: none;
     flex-direction: column;
-    background: #333;
+    background: #001500;
     position: absolute;
     top: 60px;
     right: 0;
@@ -193,6 +195,12 @@ header {
 
 .gallery img:hover {
   transform: scale(1.05);
+}
+
+.logo a img {
+  height: 120px;
+  top -10px;
+  position: absolute;
 }
 
 .team-section {
