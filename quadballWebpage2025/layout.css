@@ -277,3 +277,14 @@ footer {
   text-align: center;
   color: white;
 }
+
+video {
+  /*max-width: 800px;
+  /*width: 100%;*/
+  max-height: 95vh;
+  width: auto;
+  max-width: 95vw;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
