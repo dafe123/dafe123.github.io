@@ -288,3 +288,37 @@ video {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
 }
+
+header .socialmedia{
+	position: fixed;
+	z-index: 9999;
+	right: 0;
+	padding: 0 1rem;
+	background-color: #001500;
+	top: 0;
+	margin-top: 7rem;
+}
+
+header .socialmedia::before{
+	content: '';
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	display: block;
+	height: 1rem;
+	position: absolute;
+	left: 0;
+	top: calc(1px - 1rem);
+	width: 100%;
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='100' viewBox='0 0 500 100' preserveAspectRatio='xMinYMid slice'%3E%3Cpolygon points='0,100 100,0 550,0 550,100' style='fill:%23001500%3B' /%3E%3C/svg%3E");
+}
+
+header .socialmedia li {
+	padding-bottom: 1rem;
+	display: block;
+}
+
+header .socialmedia img{
+	width: 3rem;
+	height: 3rem;
+	object-fit: cover;
+}
