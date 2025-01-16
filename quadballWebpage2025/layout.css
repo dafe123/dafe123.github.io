@@ -255,6 +255,7 @@ header nav ul li a {
 
   .content-text {
     margin-top: 1rem;
+    width: 100%;
   }
 
   .content-text .btn {
