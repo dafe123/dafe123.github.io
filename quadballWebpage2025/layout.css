@@ -28,7 +28,7 @@ header nav ul li a {
 }
 
 .hero {
-  background: url('images/team.jpg') no-repeat center center/cover;
+  background: url('images/header.jpg') no-repeat center center/cover;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -65,7 +65,7 @@ header nav ul li a {
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 1rem;
-  min-width: 300px;
+  width: 300px;
 }
 
 .card img {
@@ -224,6 +224,7 @@ header nav ul li a {
 .content-text h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 .content-text p {
