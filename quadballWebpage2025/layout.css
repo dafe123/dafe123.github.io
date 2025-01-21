@@ -44,6 +44,20 @@ header nav ul li a {
   border-radius: 15px;
 }
 
+.header {
+  background: url('images/header2.jpg') no-repeat center center/cover;
+  height: 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.header-text {
+  font-size: 2rem;
+  text-align: center;
+}
+
 .news-slider {
   padding: 2rem;
   background: #f4f4f4;
