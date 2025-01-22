@@ -288,6 +288,10 @@ header nav ul li a {
   .nav-links a {
     text-align: center;
   }
+
+  .header {
+    height: 160px;
+  }
 }
 
 .letzter-div-vor-footer {
