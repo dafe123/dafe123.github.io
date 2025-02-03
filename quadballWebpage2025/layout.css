@@ -365,3 +365,28 @@ header .socialmedia img {
   text-align: center;
   margin-top: 5px;
 }
+
+
+.content-class {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Abstand zwischen Text und Bild */
+}
+
+.content-image {
+  flex: 1;
+}
+
+.content-text {
+  flex: 1;
+}
+
+/* Standardreihenfolge: Text links, Bild rechts */
+.content-section:nth-of-type(odd) .content-class {
+  flex-direction: row;
+}
+
+/* Abwechselnde Reihenfolge: Bild links, Text rechts */
+.content-section:nth-of-type(even) .content-class {
+  flex-direction: row-reverse;
+}
