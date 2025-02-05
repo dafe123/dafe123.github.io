@@ -1,9 +1,11 @@
+/* Allgemeine Stile */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
 }
 
+/* Header */
 header {
   background: #001500;
   color: #fff;
@@ -27,6 +29,7 @@ header nav ul li a {
   text-decoration: none;
 }
 
+/* Hero Section */
 .hero {
   background: url('images/header.jpg') no-repeat center center/cover;
   height: 100vh;
@@ -44,13 +47,13 @@ header nav ul li a {
   border-radius: 15px;
 }
 
+/* Header 2 */
 .header {
   background: url('images/header2.jpg') no-repeat center center/cover;
   height: 115px;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .header-text {
@@ -58,6 +61,7 @@ header nav ul li a {
   text-align: center;
 }
 
+/* News Slider */
 .news-slider {
   padding: 2rem;
   background: #f4f4f4;
@@ -87,6 +91,7 @@ header nav ul li a {
   border-radius: 5px;
 }
 
+/* Navigation */
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -122,6 +127,7 @@ header nav ul li a {
   color: #f69c2e;
 }
 
+/* Burger Menu */
 .burger-menu {
   display: none;
   flex-direction: column;
@@ -138,8 +144,7 @@ header nav ul li a {
   background: #fff;
 }
 
-
-
+/* Gallery */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -169,18 +174,14 @@ header nav ul li a {
 
 .content-section {
   padding: 2rem 1rem;
-  background-color: #fff;
-  /*background-color: #f9f9f9;*/
 }
 
 .content-section:nth-child(even) {
   background-color: #f9f9f9;
-  /* Helles Grau */
 }
 
 .content-section:nth-child(odd) {
   background-color: #fff;
-  /* Weiß */
 }
 
 .content-class {
@@ -217,7 +218,6 @@ header nav ul li a {
 .content-text h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  margin-top: 0;
 }
 
 .content-text p {
@@ -294,15 +294,16 @@ header nav ul li a {
   }
 }
 
-.letzter-div-vor-footer {
+/* Last Content Section */
+.content-section:last-of-type {
   background-image: url('images/baumreihe_endless_ohne_dark.png'), url('images/baumreihe_endless_mit_dark.png');
   background-repeat: repeat-x, no-repeat;
-  background-position: left, right;
-  background-size: auto 36px, auto 50px;
   background-position: right bottom, right bottom;
+  background-size: auto 36px, auto 50px;
   padding-bottom: 60px;
 }
 
+/* Footer */
 footer {
   background-color: #001500;
   padding: 10px;
@@ -310,9 +311,8 @@ footer {
   color: white;
 }
 
+/* Video */
 video {
-  /*max-width: 800px;
-  /*width: 100%;*/
   max-height: 95vh;
   width: auto;
   max-width: 95vw;
@@ -321,6 +321,7 @@ video {
   margin: 0 auto;
 }
 
+/* Social Media */
 header .socialmedia {
   position: fixed;
   z-index: 9999;
@@ -330,23 +331,8 @@ header .socialmedia {
   top: 0;
   margin-top: 7rem;
   border-radius: 1rem 0 0 1rem;
-  /* Abrundung oben links und unten links */
   padding-top: 17px;
 }
-
-/*
-header .socialmedia::before{
-	content: '';
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	display: block;
-	height: 1rem;
-	position: absolute;
-	left: 0;
-	top: calc(1px - 1rem);
-	width: 100%;
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='100' viewBox='0 0 500 100' preserveAspectRatio='xMinYMid slice'%3E%3Cpolygon points='0,100 100,0 550,0 550,100' style='fill:%23001500%3B' /%3E%3C/svg%3E");
-}*/
 
 header .socialmedia li {
   padding-bottom: 1rem;
@@ -359,6 +345,7 @@ header .socialmedia img {
   object-fit: cover;
 }
 
+/* Image Credit */
 .image-credit {
   font-size: 0.85rem;
   color: #555;
@@ -366,11 +353,11 @@ header .socialmedia img {
   margin-top: 5px;
 }
 
-
+/* Content Class (Image/ Text Flex) */
 .content-class {
   display: flex;
   align-items: center;
-  gap: 20px; /* Abstand zwischen Text und Bild */
+  gap: 20px;
 }
 
 .content-image {
@@ -381,12 +368,11 @@ header .socialmedia img {
   flex: 1;
 }
 
-/* Standardreihenfolge: Text links, Bild rechts */
+/* Alternierende Bild/Text-Position */
 .content-section:nth-of-type(odd) .content-class {
-  flex-direction: row;
+  flex-direction: row-reverse;
 }
 
-/* Abwechselnde Reihenfolge: Bild links, Text rechts */
 .content-section:nth-of-type(even) .content-class {
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
