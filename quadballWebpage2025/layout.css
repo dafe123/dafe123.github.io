@@ -41,11 +41,52 @@ header nav ul li a {
 
 .hero-text {
   text-align: center;
-  font-size: 1.5rem;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem 3rem;
   border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 20%;
 }
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+  color: #00ff00;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hero-text h2 {
+  font-size: 1.8rem;
+  margin-top: 0.5rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite ease-in-out;
+  opacity: 0.8;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0.3;
+  }
+}
+
+
+
 
 /* Header 2 */
 .header {
@@ -291,6 +332,30 @@ header nav ul li a {
 
   .header {
     height: 160px;
+  }
+
+
+  .hero {
+    height: calc(100vh - 300px); /* Bildhöhe verringern */
+    background-position: center;
+    margin-bottom: 300px;
+  }
+
+  .hero-text {
+    position: static;
+    color: black; /* Falls der Text sonst schlecht lesbar ist */
+    font-size: 1.5rem;
+    margin-top: 100vh;
+    text-align: center;
+    padding: 10px;
+    height: 280px;
+    backdrop-filter: blur(0px);
+    background: #001500;
+    border-radius: 0;
+  }
+
+  .hero-text h1 {
+    line-height: 1.2; ;
   }
 }
 
