@@ -90,7 +90,7 @@ header nav ul li a {
 
 /* Header 2 */
 .header {
-  background: url('images/header2.jpg') no-repeat center center/cover;
+  background: url('images/header-m.jpg') no-repeat bottom center/cover;
   height: 115px;
   display: flex;
   justify-content: center;
