@@ -41,11 +41,11 @@ header nav ul li a {
 
 .hero-text {
   text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 2rem 3rem;
+  /*background: rgba(0, 0, 0, 0.6);*/
+  padding: 0 1.5rem; /*2rem 3rem;*/
   border-radius: 15px;
   backdrop-filter: blur(5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);*/
   margin-top: 20%;
 }
 
