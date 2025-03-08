@@ -90,8 +90,9 @@ header nav ul li a {
 
 /* Header 2 */
 .header {
-  background: url('images/header-m.jpg') no-repeat bottom center/cover;
-  height: 115px;
+  background: url('images/header-m-2.jpg') no-repeat bottom center/cover;
+  min-height: 115px;
+  height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,6 +101,7 @@ header nav ul li a {
 .header-text {
   font-size: 2rem;
   text-align: center;
+  padding-bottom: 5px;
 }
 
 /* News Slider */
