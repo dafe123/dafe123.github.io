@@ -102,6 +102,7 @@ header nav ul li a {
   font-size: 2rem;
   text-align: center;
   padding-bottom: 5px;
+  line-height: 1;
 }
 
 /* News Slider */
@@ -285,6 +286,10 @@ header nav ul li a {
 
 /* Responsive Anpassungen */
 @media (max-width: 768px) {
+
+  .logo a img{
+    height: 100px;
+  }
 
   li {
     text-align: left;
